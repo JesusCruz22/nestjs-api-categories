@@ -1,98 +1,177 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# 🧪 Borealis – Desafío Técnico: API de Categorías
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este proyecto se trata de una API RESTful construida con **NestJS**, conectada a una base de datos **PostgreSQL**, y contenerizada con **Docker** para facilitar su ejecución.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+<details open>
+<summary>Tabla de contenidos</summary>
 
-## Description
+- [📦 Tecnologías utilizadas](#📦-tecnologías-utilizadas)
+- [🚀 Requisitos previos](#🚀-requisitos-previos)
+- [📂 Clonar el repositorio](#📂-clonar-el-repositorio)
+- [⚙️ Configurar variables de entorno](#⚙️-configurar-variables-de-entorno)
+- [🐳 Levantar el entorno con Docker](#🐳-levantar-el-entorno-con-docker)
+- [🧪 Probar el endpoint /categoria/:id](#🧪-probar-el-endpoint-categoriaid)
+- [🛠️ Estructura del proyecto](#🛠️-estructura-del-proyecto)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+</details>
 
-## Project setup
+---
 
-```bash
-$ npm install
-```
+## 📦 Tecnologías utilizadas
 
-## Compile and run the project
+| Herramienta       | Versión Exacta |
+|-------------------|----------------|
+| Node.js           | 18             |
+| NestJS            | 11.x           |
+| PostgreSQL        | 13             |
+| TypeORM           | 0.3.x          |
+| Docker            | 24.x           |
+| Docker Compose    | 2.x            |
+| Joi               | 17.x           |
 
-```bash
-# development
-$ npm run start
+---
 
-# watch mode
-$ npm run start:dev
+## 🚀 Requisitos previos
 
-# production mode
-$ npm run start:prod
-```
+Asegúrate de tener instaladas las siguientes herramientas en tu sistema:
 
-## Run tests
+- [Docker](https://www.docker.com/products/docker-desktop/) (versión 24.x)
+- [Docker Compose](https://docs.docker.com/compose/) (versión 2.x o superior)
+- [Git](https://git-scm.com/)
+- *(Opcional)* [Postman](https://www.postman.com/) o `curl` para probar los endpoints.
 
-```bash
-# unit tests
-$ npm run test
+> 🛑 **No es necesario tener Node.js ni instalar una base de datos local. Todo se ejecuta dentro de contenedores.**
 
-# e2e tests
-$ npm run test:e2e
+---
 
-# test coverage
-$ npm run test:cov
-```
-
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## 📂 Clonar el repositorio
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+git clone https://github.com/JesusCruz22/nestjs-api-categories.git
+cd nestjs-api-categories
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+---
 
-## Resources
+## ⚙️ Configurar variables de entorno
+Copia el archivo de ejemplo:
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+cp .env.example .env
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+El archivo .env debe quedar así:
+```env
+DATABASE_HOST=db
+DATABASE_PORT=5432
+DATABASE_USER=postgres
+DATABASE_PASSWORD=postgres
+DATABASE_NAME=api_categorias
+DATABASE_SYNCHRONIZE=true
+```
 
-## Support
+⚠️ No es necesario modificar estos valores si usarás Docker, ya que están alineados con el docker-compose.yml.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+---
 
-## Stay in touch
+## 🐳 Levantar el entorno con Docker
+Desde la raíz del proyecto, ejecuta:
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+```bash
+docker-compose up --build
+```
+Esto:
+- Construirá las imágenes necesarias
+- Iniciará un contenedor para la base de datos PostgreSQL (db)
+- Iniciará un contenedor para la API NestJS (api_categories)
+- Precargará datos de ejemplo en la base de datos
 
-## License
+🕓 La primera vez puede tardar unos minutos.
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+---
+
+## 📖 Documentación interactiva (Swagger)
+
+Esta API cuenta con documentación interactiva generada automáticamente con Swagger.
+
+- Una vez que la API esté corriendo (usando Docker), accede a:
+
+  [http://localhost:3000/api](http://localhost:3000/api)
+
+- Desde ahí podrás:
+  - Ver y probar todos los endpoints disponibles
+  - Consultar los esquemas de respuesta y parámetros
+
+---
+
+## 🧪 Probar el endpoint /categoria/:id
+Puedes probar la API de dos formas:
+
+✅ Opción 1: Usando curl (línea de comandos)
+```bash
+curl http://localhost:3000/categoria/1
+```
+
+Respuesta esperada:
+
+```json
+{
+  "id": 1,
+  "nombre": "Neumáticos"
+}
+```
+
+Si pruebas con un ID que no existe:
+
+```bash
+curl http://localhost:3000/categoria/99
+```
+
+Respuesta:
+
+```json
+{
+  "error": "Categoría no encontrada"
+}
+```
+
+✅ Opción 2: Usando Postman
+Abre Postman (de preferencia la versión de escritorio).
+
+Crea una nueva solicitud con el método GET.
+
+Usa la siguiente URL:
+
+```bash
+http://localhost:3000/categoria/1
+```
+
+Haz clic en Send.
+
+Si todo está funcionando, deberías ver la misma respuesta que con curl.
+
+❗ Si recibes un error ECONNREFUSED, asegúrate de que los contenedores estén en ejecución (docker-compose ps) y que no haya otro servicio ocupando el puerto 3000.
+
+---
+
+## 🛠️ Estructura del proyecto
+
+```bash
+src/
+├── app.module.ts               → Módulo principal
+├── main.ts                     → Punto de entrada de la aplicación
+├── categoria/
+│   ├── entities/
+│   │   └── categoria.entity.ts → Definición de la entidad Categoria
+│   ├── categoria.module.ts     → Módulo de categoría
+│   ├── categoria.service.ts    → Lógica de negocio
+│   └── categoria.controller.ts → Controlador y rutas
+├── env.schema.ts               → Validación del archivo .env
+.env.example                    → Variables de entorno de ejemplo
+Dockerfile                      → Imagen de la API
+docker-compose.yml              → Orquestador de servicios
+package.json                    → Dependencias de Node.js
+tsconfig.json                   → Configuración de TypeScript
+
+```
+---
